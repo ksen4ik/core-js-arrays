@@ -138,8 +138,17 @@ function getStringsLength(arr) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  const sum = arr.reduce((acc, curr) => acc + curr, 0);
+  const average = sum / arr.length;
+  if (arr.length === 0) {
+    return 0;
+  }
+  const roundedAverage =
+    average.toString().length - average.toString().indexOf('.') > 5
+      ? average.toFixed(2)
+      : average;
+  return Number(roundedAverage);
 }
 
 /**
